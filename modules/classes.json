@@ -1,0 +1,132 @@
+{
+  "Bard":{
+    "name": "Bard",
+    "description": "The bard is an artist and master of persuasion who uses their talent to entertain and distract enemies. In addition, their wide range of knowledge makes them a valuable source of information for their team.",
+    "attributes": {
+      "CON": 0,
+      "CHA": 2,
+      "DEX": 1,
+      "FOR": 0,
+      "INT": 0,
+      "WIS": 0
+    },
+    "abilities": [
+      {
+        "name": "Performance",
+        "description": "Bards are masters of performance, able to sing, dance, and play instruments to entertain audiences and distract enemies."
+      },
+      {
+        "name": "Persuasion",
+        "description": "They are skilled at convincing and persuading others, using their eloquence and charm to get what they want."
+      },
+      {
+        "name": "Knowledge",
+        "description": "Bards possess a wide range of knowledge, including history, mythology, geography, and culture, making them excellent sources of information."
+      }
+    ]
+  },
+  "Cleric":{
+    "name": "Cleric",
+    "description": "The cleric is a divine servant who uses their abilities to heal wounds and diseases, as well as offer spiritual guidance to those in need. They are also able to channel divine energy to perform powerful miracles.",
+    "attributes": {
+      "CON": 0,
+      "CHA": 0,
+      "DEX": 0,
+      "FOR": 1,
+      "INT": 0,
+      "WIS": 2
+    },
+    "abilities": [
+      {
+        "name": "Healing",
+        "description": "Clerics are experts in healing wounds and curing diseases, using their divine abilities to restore the health of their allies."
+      },
+      {
+        "name": "Wisdom",
+        "description": "They possess great knowledge of religion and theology, and can offer spiritual guidance to those in need."
+      },
+      {
+        "name": "Channeling Divine Energy",
+        "description": "They can channel divine energy to perform miracles, such as healing diseases, expelling evil spirits, or protecting their companions."
+      }
+    ]
+  },
+  "Rogue":{
+    "name": "Rogue",
+    "description": "The rogue is a specialist in stealth and manual skills, able to disarm traps, pick locks, and deceive opponents. They are a master of subterfuge and use their skills to move in the shadows and surprise their enemies.",
+    "attributes": {
+      "CON": 0,
+      "CHA": 1,
+      "DEX": 2,
+      "FOR": 0,
+      "INT": 0,
+      "WIS": 0
+    },
+    "abilities": [
+      {
+        "name": "Stealth",
+        "description": "Rogues are experts in moving silently and hiding in shadows, allowing them to approach their targets undetected."
+      },
+      {
+        "name": "Sleight of Hand",
+        "description": "They are skilled at disarming traps and picking locks with great finesse and precision."
+      },
+      {
+        "name": "Deception",
+        "description": "They are excellent at deceiving and tricking their opponents, using their bluffing and forgery skills to get what they want."
+      }
+    ]
+  },
+  "Warrior":{
+    "name": "Warrior",
+    "description": "The warrior is a skilled fighter who uses their physical strength and knowledge of combat tactics to win battles. They are able to handle various weapons and are a loyal defender of their team.",
+    "attributes": {
+      "CON": 0,
+      "CHA": 0,
+      "DEX": 1,
+      "FOR": 2,
+      "INT": 0,
+      "WIS": 0
+    },
+    "abilities": [
+      {
+        "name": "Combat Weapons",
+        "description": "They possess great skill in handling weapons and can use various weapons, such as swords, spears, and bows."
+      },
+      {
+        "name": "Physical Strength",
+        "description": "They are exceptionally strong and have great physical endurance, allowing them to withstand great damage."
+      },
+      {
+        "name": "Combat Tactics",
+        "description": "They are adept at identifying and exploiting weaknesses in their opponents, making them highly effective in combat."
+      }
+    ]
+  },
+  "Wizard":{
+    "name": "Wizard",
+    "description": "The wizard is a specialist in magic and possesses vast knowledge of spells and magical creatures. They are able to summon and control magical creatures to help them in battle and cast powerful spells that can change the course of a battle.",
+    "attributes": {
+      "CON": 0,
+      "CHA": 0,
+      "DEX": 0,
+      "FOR": 0,
+      "INT": 2,
+      "WIS": 1
+    },
+    "abilities": [
+      {
+        "name": "Magic",
+        "description": "They possess great knowledge and skill in using magic, allowing them to cast powerful spells."
+      },
+      {
+        "name": "Arcane Knowledge",
+        "description": "They are experts in the study of spells and magical objects, possessing great knowledge of magical creatures and demons, knowing how to neutralize them."
+      },
+      {
+        "name": "Conjuring",
+        "description": "They are able to summon and control magical creatures to help them in battle or to perform specific tasks."
+      }
+    ]
+  }
+}
