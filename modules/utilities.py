@@ -1,12 +1,28 @@
 import json
+import logging
 from os import system
 from time import sleep
 from colorama import init, Fore
+
 init()
+logging.basicConfig(filename='logs.log', level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
 
 def clear():
     system('cls')
+
+
+def sleep_print(*texts: str, secs: float = 0.1) -> None:
+    if not texts:
+        logging.error('Empty string variable in sleep_print function')
+        return
+    if secs < 0:
+        logging.error('secs argument is less than zero')
+        return
+    sleep(secs)
+    for text in texts:
+        print(text, end=' ')
+    print('')
 
 
 def main_menu():
@@ -19,8 +35,7 @@ def main_menu():
         print(Fore.MAGENTA + 'RPG CHARACTER CREATOR'.center(25))
         print('MAIN MENU'.center(25) + Fore.RESET, end='\n\n')
         for k, v in menu.items():
-            sleep(0.1)
-            print(padding + Fore.LIGHTCYAN_EX + k + Fore.RESET + v)
+            sleep_print(padding + Fore.LIGHTCYAN_EX + k + Fore.RESET + v)
         option = select_validation(options)
         if option == options[5]:  # Exit
             break
@@ -67,10 +82,12 @@ def char_creation_menu():
         elif option in options:
             confirm = show_class(option.title())
             if confirm == 'Y':
-                input('Yes')
+                print('Yes')
+                sleep(0.5)
                 continue
             else:
-                input('No')
+                print('No')
+                sleep(0.5)
                 continue
         else:
             continue
@@ -108,20 +125,42 @@ def select_validation(options_tuple, need_add_options=False, *add_options):
 
 
 def show_class(choose_class):
+    clear()
     class_data = classes[choose_class]
     skills = class_data['skills']
-    print(Fore.LIGHTMAGENTA_EX + class_data['name'] + Fore.RESET)
-    print(class_data['description'])
+    print(Fore.LIGHTMAGENTA_EX + f"{class_data['name']}".upper().center(50) + Fore.RESET)
+    print_wrapped_text(class_data['description'], 50, True)
+    sleep_print('')
+    print('Attribute bonus: '.rjust(25), end='')
     for k, v in class_data['modify'].items():
         if v > 0:
-            print(f'+{v} {k}')
-    print('')
+            print(f'+{v} {k}', end=' ')
+    sleep_print('\n')
+    print('Skills'.center(50))
     for skill in skills:
-        print(skill['name'])
-        print(skill['description'])
+        print(Fore.MAGENTA + f'{skill["name"]}'.center(50) + Fore.RESET)
+        print_wrapped_text(skill['description'], 50, True)
         print('')
     create = input('Confirm selection? [Y]') or 'Y'
     return create
+
+
+def print_wrapped_text(text: str, max_chars_per_line: int, is_paragraph: bool = False) -> None:
+    if not text:
+        logging.error('Empty string variable in print_wrapped_text function')
+        return
+    words = text.split()
+    current_line = '  ' if is_paragraph else ''
+    wrapped_text_lines = []
+    for word in words:
+        if len(current_line + ' ' + word) <= max_chars_per_line:
+            current_line += ' ' + word if current_line else word
+        else:
+            wrapped_text_lines.append(current_line)
+            current_line = word
+    wrapped_text_lines.append(current_line)
+    for text_line in wrapped_text_lines:
+        sleep_print(text_line)
 
 
 with open('database/classes.json') as f:
