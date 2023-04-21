@@ -57,12 +57,12 @@ def char_creation_menu():
             print(padding + Fore.LIGHTCYAN_EX + o.title() + Fore.RESET)
         print('Choose a class or')
         print(Fore.LIGHTCYAN_EX + 'Return' + Fore.RESET, 'to main menu')
-        option = select_validation(options, True, exit_menu)
+        option = select_validation(options, exit_menu)
         if option == exit_menu.casefold():
             break
         elif option in options:
             confirm = show_class(option.casefold())
-            if confirm == 'Y':  # Create char with selected class
+            if confirm == 'yes':  # Create char with selected class
                 create_char(option)
                 continue
             else:  # Return to classes' list
@@ -88,19 +88,24 @@ def show_class(choose_class):
         print(Fore.MAGENTA + f'{skill["name"]}'.center(50) + Fore.RESET)
         print_wrapped_text(skill['description'], 50, True)
         print('')
-    create = input('Confirm selection? [Y]') or 'Y'
+    print('Confirm selection?')
+    create = select_validation(('yes', 'no'), stdoption='yes')
     return create
 
 
 def char_list_menu():
-    options = ['Return']
+    with open('database/characters.json', 'r') as archive:
+        characters_data = json.load(archive)
+    chars_names = [name for name in characters_data.keys()]
     while True:
         clear()
-        print('  Name | Class | Level\n' * 5)
-        print('Choose a character or')
-        print('Return to main menu')
-        option = input('>>')
-        if option.casefold() == options[0].casefold():
+        for name in chars_names:
+            char = characters_data[name]
+            print(' '+char['name'].ljust(20), end='')
+            print(char['gender'].ljust(6), end=' | ')
+            print('Level', (char['level']), char['char class'])
+        option = select_validation(chars_names, 'return', stdoption='return')
+        if option == 'return':
             break
 
 

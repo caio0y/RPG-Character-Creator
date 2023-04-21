@@ -22,7 +22,8 @@ def create_char(selected_class):
         'attributes': attributes,
         'create_date': datetime.now().strftime('%d/%m/%y - %H:%M')
     }
-    if character: input('>')
+    if character:
+        input('>')
     save_character(char_name.casefold(), character)
 
 
@@ -33,11 +34,15 @@ def name():
 
 
 def gender(char_name):
-    clear()
-    print(f"What's the gender of {char_name}? >")
     genders = ['Female', 'Male', 'Other']
-    char_gender = select_validation(genders)
-    return char_gender
+    while True:
+        clear()
+        print(f"What's the gender of {char_name}? >")
+        char_gender = select_validation(genders, stdoption=genders[2])
+        print(f'You chose {char_gender}, are you sure?')
+        confirm = select_validation(('yes', 'no'), stdoption='yes')
+        if confirm == 'yes':
+            return char_gender
 
 
 def select_skill(selected_class, skills):

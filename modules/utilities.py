@@ -1,10 +1,8 @@
-import logging
 from os import system
 from time import sleep
 from colorama import init, Fore
 
 init()
-logging.basicConfig(filename='logs.log', level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
 
 def clear():
@@ -13,38 +11,48 @@ def clear():
 
 def sleep_print(*texts: str, secs: float = 0.1) -> None:
     if not texts:
-        logging.error('Empty string variable in sleep_print function')
         return
     if secs < 0:
-        logging.error('secs argument is less than zero')
         return
     sleep(secs)
     for text in texts:
         print(text)
 
 
-def select_validation(options_tuple, need_add_options=False, *add_options):
-    option = input('>>').casefold()
+def select_validation(options_tuple, *add_options, stdoption=None):
+    option = default_option(stdoption)
     options = [item.casefold() for item in options_tuple]
-    if need_add_options:
+    if add_options:
         options.extend([item.casefold() for item in add_options])
     if option not in options:
         print('\n' + Fore.LIGHTBLACK_EX + 'Options: ')
         for i in range(0, len(options)):
             print(f'[{options[i].title()}]', end='')
         print('\n' + Fore.RESET)
-        option = input('>>').casefold()
+        option = default_option(stdoption)
         while option not in options:
             print(Fore.RED + 'Invalid option!' + Fore.RESET)
-            option = input('>>').casefold()
+            option = default_option(stdoption)
         return option
     else:
         return option
 
 
+def default_option(stdoption):
+    if stdoption:
+        stdoption = stdoption.casefold()
+        option = input('>>').casefold() or stdoption
+        if option.casefold() == stdoption:
+            return stdoption
+        else:
+            return option
+    else:
+        option = input('>>').casefold()
+        return option
+
+
 def print_wrapped_text(text: str, max_chars_per_line: int, is_paragraph: bool = False) -> None:
     if not text:
-        logging.error('Empty string variable in print_wrapped_text function')
         return
     words = text.split()
     current_line = '  ' if is_paragraph else ''
