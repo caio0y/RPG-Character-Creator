@@ -1,5 +1,5 @@
 {
-  "Bard":{
+  "bard":{
     "name": "Bard",
     "description": "The bard is an artist and master of persuasion who uses their talent to entertain and distract enemies. In addition, their wide range of knowledge makes them a valuable source of information for their team.",
     "modify": {
@@ -24,7 +24,7 @@
       }
     ]
   },
-  "Cleric":{
+  "cleric":{
     "name": "Cleric",
     "description": "The cleric is a divine servant who uses their abilities to heal wounds and diseases, as well as offer spiritual guidance to those in need. They are also able to channel divine energy to perform powerful miracles.",
     "modify": {
@@ -49,7 +49,7 @@
       }
     ]
   },
-  "Rogue":{
+  "rogue":{
     "name": "Rogue",
     "description": "The rogue is a specialist in stealth and manual skills, able to disarm traps, pick locks, and deceive opponents. They are a master of subterfuge and use their skills to move in the shadows and surprise their enemies.",
     "modify": {
@@ -74,7 +74,7 @@
       }
     ]
   },
-  "Warrior":{
+  "warrior":{
     "name": "Warrior",
     "description": "The warrior is a skilled fighter who uses their physical strength and knowledge of combat tactics to win battles. They are able to handle various weapons and are a loyal defender of their team.",
     "modify": {
@@ -99,7 +99,7 @@
       }
     ]
   },
-  "Wizard":{
+  "wizard":{
     "name": "Wizard",
     "description": "The wizard is a specialist in magic and possesses vast knowledge of spells and magical creatures. They are able to summon and control magical creatures to help them in battle and cast powerful spells that can change the course of a battle.",
     "modify": {

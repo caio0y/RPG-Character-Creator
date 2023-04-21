@@ -36,3 +36,13 @@ def bye():
     print("      \\/___/  `/___/> \\/____/ \\/_/")
     print("                 /\\___/           ")
     print("                 \\/__/            \033[0m"+Fore.RESET)
+
+
+def dices():
+    print(Fore.LIGHTBLUE_EX+"       .-------."+Fore.LIGHTGREEN_EX+"    ______")
+    print(Fore.LIGHTBLUE_EX+"      /   o   /|"+Fore.LIGHTGREEN_EX+"   /\\     \\")
+    print(Fore.LIGHTBLUE_EX+"     /_______/o|"+Fore.LIGHTGREEN_EX+"  /o \\  o  \\")
+    print(Fore.LIGHTBLUE_EX+"     | o     | |"+Fore.LIGHTGREEN_EX+" /   o\\_____\\ ")
+    print(Fore.LIGHTBLUE_EX+"     |   o   |o/"+Fore.LIGHTGREEN_EX+" \\o   /o    /")
+    print(Fore.LIGHTBLUE_EX+"     |     o |/ "+Fore.LIGHTGREEN_EX+"  \\ o/  o  /")
+    print(Fore.LIGHTBLUE_EX+"     '-------'  "+Fore.LIGHTGREEN_EX+"   \\/____o/"+Fore.RESET)
