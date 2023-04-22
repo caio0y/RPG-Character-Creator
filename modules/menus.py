@@ -1,4 +1,4 @@
-from modules.utilities import clear, sleep_print, select_validation, print_wrapped_text
+from modules.utilities import clear, sleep_print, select_validation, print_wrapped_text, view_sheet
 from modules.character_creator import create_char
 from colorama import init, Fore
 from time import sleep
@@ -107,6 +107,11 @@ def char_list_menu():
         option = select_validation(chars_names, 'return', stdoption='return')
         if option == 'return':
             break
+        else:
+            sheet = characters_data[option]
+            view_sheet(sheet)
+            input('\nReturn to...?')
+
 
 
 with open('database/classes.json') as f:

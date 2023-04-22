@@ -1,3 +1,5 @@
+import re
+import json
 from os import system
 from time import sleep
 from colorama import init, Fore
@@ -66,3 +68,44 @@ def print_wrapped_text(text: str, max_chars_per_line: int, is_paragraph: bool = 
     wrapped_text_lines.append(current_line)
     for text_line in wrapped_text_lines:
         sleep_print(text_line)
+
+
+def input_validation(len_min: int = 4, len_max: int = 20):
+    user_input = input('>> ').strip()
+    user_input = re.sub('\s+', ' ', user_input)   # Remove duplicate spaces
+    if not len_min <= len(user_input) <= len_max:
+        print(f"Must have between {len_min} and {len_max} characters.")
+        return None
+    if not re.match("^[a-zA-Z,'\"\s]+$", user_input):
+        print("Must contain only letters, spaces, double quotes, one apostrophe and one comma.")
+        return None
+    if user_input.count('"') > 2:
+        print("Must contain no more than 2 double quotes.")
+        return None
+    elif user_input.count("'") > 1:
+        print("Must contain no more than 1 apostrophe.")
+        return None
+    elif user_input.count(",") > 1:
+        print("Must contain no more than 1 comma.")
+        return None
+    # If all validations passed, return the valid string
+    return user_input
+
+
+def view_sheet(char):
+    with open('database/classes.json', 'r') as archive:
+        char_class_data = json.load(archive)
+    modify = char_class_data[str(char['char class']).casefold()]['modify']
+    clear()
+    print('Name:'.rjust(10), char["name"])
+    print('Gender:'.rjust(10), char["gender"])
+    print('Class:'.rjust(10), f'level {char["level"]} {char["char class"]}')
+    print('Skill:'.rjust(10), char["skill"])
+    for attribute, points in char['attributes'].items():
+        if modify[attribute] > 0:
+            print(f"{attribute}:".rjust(10), points, Fore.LIGHTBLACK_EX + f"(+{modify[attribute]})" + Fore.RESET)
+        elif modify[attribute] < 0:
+            print(f"{attribute}:".rjust(10), points, Fore.LIGHTBLACK_EX + f"(-{modify[attribute]})" + Fore.RESET)
+        else:
+            print(f"{attribute}:".rjust(10), points)
+    print('')
