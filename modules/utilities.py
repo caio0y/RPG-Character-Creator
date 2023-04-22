@@ -2,9 +2,6 @@ import re
 import json
 from os import system
 from time import sleep
-from colorama import init, Fore
-
-init()
 
 
 def clear():
@@ -27,13 +24,13 @@ def select_validation(options_tuple, *add_options, stdoption=None):
     if add_options:
         options.extend([item.casefold() for item in add_options])
     if option not in options:
-        print('\n' + Fore.LIGHTBLACK_EX + 'Options: ')
+        print('\n' + '\033[30;1m' + 'Options: ')
         for i in range(0, len(options)):
             print(f'[{options[i].title()}]', end='')
-        print('\n' + Fore.RESET)
+        print('\n' + '\033[0m')
         option = default_option(stdoption)
         while option not in options:
-            print(Fore.RED + 'Invalid option!' + Fore.RESET)
+            print('\033[31;1m' + 'Invalid option!' + '\033[0m')
             option = default_option(stdoption)
         return option
     else:
@@ -103,9 +100,9 @@ def view_sheet(char):
     print('Skill:'.rjust(10), char["skill"])
     for attribute, points in char['attributes'].items():
         if modify[attribute] > 0:
-            print(f"{attribute}:".rjust(10), points, Fore.LIGHTBLACK_EX + f"(+{modify[attribute]})" + Fore.RESET)
+            print(f"{attribute}:".rjust(10), points, '\033[30;1m' + f"(+{modify[attribute]})" + '\033[0m')
         elif modify[attribute] < 0:
-            print(f"{attribute}:".rjust(10), points, Fore.LIGHTBLACK_EX + f"(-{modify[attribute]})" + Fore.RESET)
+            print(f"{attribute}:".rjust(10), points, '\033[30;1m' + f"(-{modify[attribute]})" + '\033[0m')
         else:
             print(f"{attribute}:".rjust(10), points)
     print('')

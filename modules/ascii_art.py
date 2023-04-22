@@ -1,6 +1,4 @@
 import os
-from colorama import init, Style, Fore
-init()
 
 
 def clear():
@@ -9,7 +7,7 @@ def clear():
 
 def title():
     clear()
-    print(Fore.MAGENTA + "          _____ _____ _____     ")
+    print('\033[35m' + "          _____ _____ _____     ")
     print("         | __  |  _  |   __|    ")
     print("         |    -|   __|  |  |    ")
     print("         |__|__|__|  |_____|    ")
@@ -20,14 +18,14 @@ def title():
     print("                     _             ")
     print("     ___ ___ ___ ___| |_ ___ ___  ")
     print("    |  _|  _| -_| .'|  _| . |  _| ")
-    print("    |___|_| |___|__,|_| |___|_|   "+Fore.RESET)
+    print("    |___|_| |___|__,|_| |___|_|   "+'\033[39m')
     print('\033[6m')
-    input('press ENTER to start'.center(37) + Style.RESET_ALL)
+    input('press ENTER to start'.center(37) + '\033[0m')
 
 
 def bye():
     clear()
-    print(Fore.LIGHTMAGENTA_EX+"   __                      __     ")
+    print('\033[35;1m'+"   __                      __     ")
     print("  /\\ \\                    /\\ \\    ")
     print("  \\ \\ \\____  __  __     __\\ \\ \\   ")
     print("   \\ \\ '__`\\/\\ \\/\\ \\  /'__`\\ \\ \\  ")
@@ -35,14 +33,14 @@ def bye():
     print("     \\ \\_,__/\\/`____ \\ \\____\\\\/\\_\\")
     print("      \\/___/  `/___/> \\/____/ \\/_/")
     print("                 /\\___/           ")
-    print("                 \\/__/            \033[0m"+Fore.RESET)
+    print("                 \\/__/            \033[0m"+'\033[0m')
 
 
 def dices():
-    print(Fore.LIGHTBLUE_EX+"       .-------."+Fore.LIGHTGREEN_EX+"    ______")
-    print(Fore.LIGHTBLUE_EX+"      /   o   /|"+Fore.LIGHTGREEN_EX+"   /\\     \\")
-    print(Fore.LIGHTBLUE_EX+"     /_______/o|"+Fore.LIGHTGREEN_EX+"  /o \\  o  \\")
-    print(Fore.LIGHTBLUE_EX+"     | o     | |"+Fore.LIGHTGREEN_EX+" /   o\\_____\\ ")
-    print(Fore.LIGHTBLUE_EX+"     |   o   |o/"+Fore.LIGHTGREEN_EX+" \\o   /o    /")
-    print(Fore.LIGHTBLUE_EX+"     |     o |/ "+Fore.LIGHTGREEN_EX+"  \\ o/  o  /")
-    print(Fore.LIGHTBLUE_EX+"     '-------'  "+Fore.LIGHTGREEN_EX+"   \\/____o/"+Fore.RESET)
+    print('\033[34;1m'+"       .-------."+'\033[32m'+"    ______")
+    print('\033[34;1m'+"      /   o   /|"+'\033[32m'+"   /\\     \\")
+    print('\033[34;1m'+"     /_______/o|"+'\033[32m'+"  /o \\  o  \\")
+    print('\033[34;1m'+"     | o     | |"+'\033[32m'+" /   o\\_____\\ ")
+    print('\033[34;1m'+"     |   o   |o/"+'\033[32m'+" \\o   /o    /")
+    print('\033[34;1m'+"     |     o |/ "+'\033[32m'+"  \\ o/  o  /")
+    print('\033[34;1m'+"     '-------'  "+'\033[32m'+"   \\/____o/"+'\033[0m')

@@ -1,9 +1,7 @@
 from modules.utilities import clear, sleep_print, select_validation, print_wrapped_text, view_sheet
 from modules.character_creator import create_char
-from colorama import init, Fore
 from time import sleep
 import json
-init()
 
 
 def main_menu():
@@ -13,10 +11,10 @@ def main_menu():
     padding = ' ' * 3
     while True:
         clear()
-        print(Fore.MAGENTA + 'RPG CHARACTER CREATOR'.center(25))
-        print('MAIN MENU'.center(25) + Fore.RESET, end='\n\n')
+        print('\033[35m'+'RPG CHARACTER CREATOR'.center(25))
+        print('MAIN MENU'.center(25)+'\033[0m', end='\n\n')
         for k, v in menu.items():
-            sleep_print(padding + Fore.LIGHTCYAN_EX + k + Fore.RESET + v)
+            sleep_print(padding + '\033[36;1m' + k + '\033[0m' + v)
         option = select_validation(options)
         if option == options[5]:  # Exit
             break
@@ -51,12 +49,12 @@ def char_creation_menu():
     padding = ' ' * 3
     while True:
         clear()
-        print(Fore.MAGENTA + 'CHARACTER CREATION MENU' + Fore.RESET, end='\n\n')
+        print('\033[35m' + 'CREATION MENU' + '\033[0m', end='\n\n')
         for o in options:
             sleep(0.1)
-            print(padding + Fore.LIGHTCYAN_EX + o.title() + Fore.RESET)
-        print('Choose a class or')
-        print(Fore.LIGHTCYAN_EX + 'Return' + Fore.RESET, 'to main menu')
+            print(padding + '\033[36;1m' + o.title() + '\033[0m')
+        print('\nChoose a class or')
+        print('\033[36;1m' + 'Return' + '\033[0m', 'to main menu')
         option = select_validation(options, exit_menu)
         if option == exit_menu.casefold():
             break
@@ -75,7 +73,7 @@ def show_class(choose_class):
     clear()
     class_data = classes[choose_class]
     skills = class_data['skills']
-    print(Fore.LIGHTMAGENTA_EX + f"{class_data['name']}".upper().center(50) + Fore.RESET)
+    print('\033[35;1m' + f"{class_data['name']}".upper().center(50) + '\033[0m')
     print_wrapped_text(class_data['description'], 50, True)
     sleep_print('')
     print('Attribute bonus: '.rjust(25), end='')
@@ -85,7 +83,7 @@ def show_class(choose_class):
     sleep_print('\n')
     print('Skills'.center(50))
     for skill in skills:
-        print(Fore.MAGENTA + f'{skill["name"]}'.center(50) + Fore.RESET)
+        print('\033[35m' + f'{skill["name"]}'.center(50) + '\033[0m')
         print_wrapped_text(skill['description'], 50, True)
         print('')
     print('Confirm selection?')
@@ -111,7 +109,6 @@ def char_list_menu():
             sheet = characters_data[option]
             view_sheet(sheet)
             input('\nReturn to...?')
-
 
 
 with open('database/classes.json') as f:
